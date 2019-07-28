@@ -10,21 +10,18 @@ def main():
     try:
         breed_list = retrieve_breed_list()
 
-        for breed_link in breed_list:
-            print(breed_link)
+        for breed_link in breed_list[1:]:
+            # first_breed = breed_list[1]
+            page = requests.get(breed_link)
+            desc = dict()
+            desc["breed"] = breed_link.split("/")[-2]
 
-        first_breed = breed_list[1]
-        page = requests.get(first_breed)
-        desc = dict()
-        desc["breed"] = first_breed.split("/")[-2]
-
-        if page.status_code == 200:
-            soup = BeautifulSoup(page.content, 'html.parser')
-            lis = soup.find("ul", {"class": "attribute-list"}).find_all("li")
-            for li in lis:
-                span = li.find_all("span", {"class", "attribute-list__description"})
-                print(span[0].text)
-
+            if page.status_code == 200:
+                soup = BeautifulSoup(page.content, 'html.parser')
+                lis = soup.find("ul", {"class": "attribute-list"}).find_all("li")
+                for li in lis:
+                    span = li.find_all("span", {"class", "attribute-list__description"})
+                    print(span[0].text)
 
     except Exception as ex:
         print("Failed kennel scrape " + repr(ex))
