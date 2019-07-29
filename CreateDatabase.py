@@ -12,6 +12,13 @@ create = "CREATE TABLE breed_raw (" \
          "expectancy_raw TEXT NULL," \
          "group_raw TEXT NULL)"
 
+CREATE_TEMPERAMENT = "CREATE TABLE temperament " \
+                     "(" \
+                     "  id INTEGER PRIMARY KEY AUTOINCREMENT," \
+                     "  breed_raw_id INTEGER NOT NULL," \
+                     "  desc TEXT NOT NULL" \
+                     ")"
+
 conn.execute(create)
 
 # class Info(Enum):

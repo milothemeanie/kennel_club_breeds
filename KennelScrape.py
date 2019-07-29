@@ -9,7 +9,7 @@ URL = "http://www.akc.org/dog-breeds/{}"
 
 ALL_BREEDS = "all-breeds"
 
-DB = '/home/cward/PycharmProjects/kennel_club_breeds/kennel.db'
+DB = 'kennel.db'
 
 
 # Example breed description
